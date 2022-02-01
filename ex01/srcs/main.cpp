@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 18:47:08 by jodufour          #+#    #+#             */
-/*   Updated: 2022/02/01 00:33:29 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/02/01 00:48:23 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,11 @@ static void	__test0(void)
 {
 	try
 	{
-		Bureaucrat	b0("Charlie", 149);
+		Form	f("ation", false, 50, 25);
 
-		std::cout << b0 << std::endl;
-		b0.decrementGrade();
-		std::cout << b0 << std::endl;
-		b0.decrementGrade();
-		std::cout << b0 << std::endl;
+		std::cout << f << std::endl;
 	}
-	catch (std::exception &e)
+	catch(const std::exception &e)
 	{
 		std::cerr
 		<< "Error: "
@@ -38,15 +34,11 @@ static void	__test1(void)
 {
 	try
 	{
-		Bureaucrat	b1("Ben", 2);
+		Form	f("idable", false, 256, 42);
 
-		std::cout << b1 << std::endl;
-		b1.incrementGrade();
-		std::cout << b1 << std::endl;
-		b1.incrementGrade();
-		std::cout << b1 << std::endl;
+		std::cout << f << std::endl;
 	}
-	catch (std::exception &e)
+	catch(const std::exception &e)
 	{
 		std::cerr
 		<< "Error: "
@@ -59,11 +51,11 @@ static void	__test2(void)
 {
 	try
 	{
-		Bureaucrat	b2("Alexandra", 2147483647);
+		Form	f("ulaire", false, 21, 0);
 
-		std::cout << b2 << std::endl;
+		std::cout << f << std::endl;
 	}
-	catch (std::exception &e)
+	catch(const std::exception &e)
 	{
 		std::cerr
 		<< "Error: "
@@ -76,16 +68,51 @@ static void	__test3(void)
 {
 	try
 	{
-		Bureaucrat	b3("Melissa", -2147483648);
+		Bureaucrat	b("Charlie", 42);
+		Form		f("at", false, 42, 21);
 
-		std::cout << b3 << std::endl;
+		std::cout << b << std::endl;
+		std::cout << f << std::endl;
+		b.signForm(f);
 	}
-	catch (std::exception &e)
+	catch(const std::exception &e)
 	{
 		std::cerr
 		<< "Error: "
 		<< e.what()
 		<< std::endl;
+	}
+}
+
+static void	__test4(void)
+{
+	try
+	{
+		Bureaucrat	b("Ben", 55);
+		Form		f("ula 1", false, 54, 21);
+
+		std::cout << b << std::endl;
+		std::cout << f << std::endl;
+		b.signForm(f);
+	}
+	catch(const std::exception &e)
+	{
+		std::cerr
+		<< "Error: "
+		<< e.what()
+		<< std::endl;
+	}
+}
+
+static void	__test5(void)
+{
+	try
+	{
+		
+	}
+	catch(const std::exception &e)
+	{
+		
 	}
 }
 
@@ -98,6 +125,7 @@ int	main(void)
 	__test2();
 	std::cout << "===============================================" << std::endl;
 	__test3();
-
+	std::cout << "===============================================" << std::endl;
+	__test4();
 	return EXIT_SUCCESS;
 }

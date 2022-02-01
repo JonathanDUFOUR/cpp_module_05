@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 18:48:18 by jodufour          #+#    #+#             */
-/*   Updated: 2022/02/01 00:38:24 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/02/01 00:38:46 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,14 +80,14 @@ Bureaucrat::~Bureaucrat(void)
 //                                 Accessors                                 //
 // ************************************************************************* //
 
-int const	&Bureaucrat::getGrade(void) const
-{
-	return this->_grade;
-}
-
 std::string const	&Bureaucrat::getName(void) const
 {
 	return this->_name;
+}
+
+int const	&Bureaucrat::getGrade(void) const
+{
+	return this->_grade;
 }
 
 // ************************************************************************* //
@@ -106,6 +106,31 @@ void	Bureaucrat::incrementGrade(void)
 	if (this->_grade == 1)
 		throw Bureaucrat::GradeTooHighException();
 	--this->_grade;
+}
+
+void	Bureaucrat::signForm(Form &f) const
+{
+	try
+	{
+		f.beSigned(*this);
+		std::cout
+		<< "Bureaucrat "
+		<< this->_name
+		<< " signed Form "
+		<< f.getName()
+		<< std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr
+		<< "Error: Bureaucrat "
+		<< this->_name
+		<< " couldn't sign Form "
+		<< f.getName()
+		<< " because "
+		<< e.what()
+		<< std::endl;
+	}
 }
 
 char const	*Bureaucrat::GradeTooHighException::what(void) const throw()

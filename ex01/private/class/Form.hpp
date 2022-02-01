@@ -1,61 +1,83 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/30 18:47:48 by jodufour          #+#    #+#             */
-/*   Updated: 2022/02/01 00:01:29 by jodufour         ###   ########.fr       */
+/*   Created: 2022/01/31 21:11:45 by jodufour          #+#    #+#             */
+/*   Updated: 2022/01/31 23:20:50 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUREAUCRAT_HPP
-# define BUREAUCRAT_HPP
+#ifndef FORM_HPP
+# define FORM_HPP
 
 # include <iostream>
+# include "class/Bureaucrat.hpp"
 
-class Bureaucrat
+class Bureaucrat;
+
+class Form
 {
 private:
 	// Attributes
 	std::string const	_name;
-	int					_grade;
+	bool				_isSigned;
+	int const			_gradeToSign;
+	int const			_gradeToExec;
 
 	class GradeTooHighException : public std::exception
 	{
 	private:
+		// Member functions
 		virtual char const	*what(void) const throw();
 	};
 
 	class GradeTooLowException : public std::exception
 	{
 	private:
+		// Member functions
 		virtual char const	*what(void) const throw();
 	};
 
+	class AlreadySignedException : public std::exception
+	{
+	private:
+		// Member functions
+		virtual char const	*what(void) const throw();
+	};
+
+protected:
+
 public:
 	// Constructors
-	Bureaucrat(void);
-	Bureaucrat(Bureaucrat const &src);
-	Bureaucrat(std::string const name, int const grade);
+	Form(void);
+	Form(Form const &src);
+	Form(
+		std::string const name,
+		bool const issigned,
+		int const gradeToSign,
+		int const gradeToExec);
 
 	// Destructors
-	virtual ~Bureaucrat(void);
+	virtual ~Form(void);
 
 	// Accessors
-	int const			&getGrade(void) const;
-
 	std::string const	&getName(void) const;
 
+	bool const			&getIsSigned(void) const;
+
+	int const			&getGradeToSign(void) const;
+	int const			&getGradeToExec(void) const;
+
 	// Member functions
-	void	decrementGrade(void);
-	void	incrementGrade(void);
+	void	beSigned(Bureaucrat const &b);
 
 	// Operator overloads
-	Bureaucrat	&operator=(Bureaucrat const &rhs);
+	Form	&operator=(Form const &rhs);
 };
 
-std::ostream	&operator<<(std::ostream &o, Bureaucrat const &rhs);
+std::ostream	&operator<<(std::ostream &o, Form const &rhs);
 
 #endif
