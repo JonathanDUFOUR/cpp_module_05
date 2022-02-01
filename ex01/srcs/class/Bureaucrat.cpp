@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 18:48:18 by jodufour          #+#    #+#             */
-/*   Updated: 2022/02/01 00:38:46 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/02/01 15:40:12 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@ Bureaucrat::Bureaucrat(void) :
 	std::cout
 	<< "Spawning Bureaucrat "
 	<< this->_name
-	<< "("
-	<< this->_grade
-	<< ")"
+	<< " (" << this->_grade << ")"
 	<< std::endl;
 }
 
@@ -36,9 +34,7 @@ Bureaucrat::Bureaucrat(Bureaucrat const &src) :
 	std::cout
 	<< "Spawning Bureaucrat "
 	<< this->_name
-	<< "("
-	<< this->_grade
-	<< ")"
+	<< " (" << this->_grade << ")"
 	<< std::endl;
 	if (this->_grade < 1)
 		throw Bureaucrat::GradeTooHighException();
@@ -47,16 +43,14 @@ Bureaucrat::Bureaucrat(Bureaucrat const &src) :
 	*this = src;
 }
 
-Bureaucrat::Bureaucrat(std::string const name, int const grade) :
+Bureaucrat::Bureaucrat(std::string const &name, int const grade) :
 	_name(name),
 	_grade(grade)
 {
 	std::cout
 	<< "Spawning Bureaucrat "
 	<< this->_name
-	<< "("
-	<< this->_grade
-	<< ")"
+	<< " (" << this->_grade << ")"
 	<< std::endl;
 	if (this->_grade < 1)
 		throw Bureaucrat::GradeTooHighException();

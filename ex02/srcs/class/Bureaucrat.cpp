@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 18:48:18 by jodufour          #+#    #+#             */
-/*   Updated: 2022/02/01 15:39:56 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/02/01 19:36:35 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,7 @@ Bureaucrat::Bureaucrat(std::string const &name, int const grade) :
 	std::cout
 	<< "Spawning Bureaucrat "
 	<< this->_name
-	<< "("
-	<< this->_grade
-	<< ")"
+	<< " (" << this->_grade << ")"
 	<< std::endl;
 	if (this->_grade < 1)
 		throw Bureaucrat::GradeTooHighException();
@@ -76,14 +74,14 @@ Bureaucrat::~Bureaucrat(void)
 //                                 Accessors                                 //
 // ************************************************************************* //
 
-int const	&Bureaucrat::getGrade(void) const
-{
-	return this->_grade;
-}
-
 std::string const	&Bureaucrat::getName(void) const
 {
 	return this->_name;
+}
+
+int const	&Bureaucrat::getGrade(void) const
+{
+	return this->_grade;
 }
 
 // ************************************************************************* //
@@ -102,6 +100,56 @@ void	Bureaucrat::incrementGrade(void)
 	if (this->_grade == 1)
 		throw Bureaucrat::GradeTooHighException();
 	--this->_grade;
+}
+
+void	Bureaucrat::signForm(AForm &f) const
+{
+	try
+	{
+		f.beSigned(*this);
+		std::cout
+		<< "Bureaucrat "
+		<< this->_name
+		<< " signed AForm "
+		<< f.getName()
+		<< std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr
+		<< "Error: Bureaucrat "
+		<< this->_name
+		<< " couldn't sign AForm "
+		<< f.getName()
+		<< " because "
+		<< e.what()
+		<< std::endl;
+	}
+}
+
+void	Bureaucrat::executeForm(AForm const &f) const
+{
+	try
+	{
+		f.execute(*this);
+		std::cout
+		<< "Bureaucrat "
+		<< this->_name
+		<< " executed AForm "
+		<< f.getName()
+		<< std::endl;
+	}
+	catch(const std::exception &e)
+	{
+		std::cerr
+		<< "Error: Bureaucrat "
+		<< this->_name
+		<< " couldn't execute AForm "
+		<< f.getName()
+		<< " because "
+		<< e.what()
+		<< std::endl;
+	}
 }
 
 char const	*Bureaucrat::GradeTooHighException::what(void) const throw()

@@ -6,20 +6,28 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 18:47:08 by jodufour          #+#    #+#             */
-/*   Updated: 2022/02/01 14:36:56 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/02/01 20:38:54 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cstdlib>
 #include "class/Bureaucrat.hpp"
+#include "class/ShrubberyCreationForm.hpp"
+#include "class/RobotomyRequestForm.hpp"
+#include "class/PresidentialPardonForm.hpp"
 
 static void	__test0(void)
 {
 	try
 	{
-		Form	f("ation", false, 50, 25);
+		Bureaucrat				b("Delphine", 137);
+		ShrubberyCreationForm	f("FoodTruck");
 
+		std::cout << b << std::endl;
 		std::cout << f << std::endl;
+
+		b.signForm(f);
+		b.executeForm(f);
 	}
 	catch(const std::exception &e)
 	{
@@ -34,9 +42,14 @@ static void	__test1(void)
 {
 	try
 	{
-		Form	f("idable", false, 256, 42);
+		Bureaucrat			b("Melissa", 1);
+		RobotomyRequestForm	f("Hoodie");
 
+		std::cout << b << std::endl;
 		std::cout << f << std::endl;
+
+		b.signForm(f);
+		b.executeForm(f);
 	}
 	catch(const std::exception &e)
 	{
@@ -51,69 +64,14 @@ static void	__test2(void)
 {
 	try
 	{
-		Form	f("ulaire", false, 21, 0);
-
-		std::cout << f << std::endl;
-	}
-	catch(const std::exception &e)
-	{
-		std::cerr
-		<< "Error: "
-		<< e.what()
-		<< std::endl;
-	}
-}
-
-static void	__test3(void)
-{
-	try
-	{
-		Bureaucrat	b("Charlie", 42);
-		Form		f("at", false, 42, 21);
+		Bureaucrat				b("Bibiche", 2);
+		PresidentialPardonForm	f("Reach");
 
 		std::cout << b << std::endl;
 		std::cout << f << std::endl;
+
 		b.signForm(f);
-	}
-	catch(const std::exception &e)
-	{
-		std::cerr
-		<< "Error: "
-		<< e.what()
-		<< std::endl;
-	}
-}
-
-static void	__test4(void)
-{
-	try
-	{
-		Bureaucrat	b("Ben", 55);
-		Form		f("ula 1", false, 54, 21);
-
-		std::cout << b << std::endl;
-		std::cout << f << std::endl;
-		b.signForm(f);
-	}
-	catch(const std::exception &e)
-	{
-		std::cerr
-		<< "Error: "
-		<< e.what()
-		<< std::endl;
-	}
-}
-
-static void	__test5(void)
-{
-	try
-	{
-		Bureaucrat	b("Melissa", 1);
-		Form		f("alin", true, 42, 24);
-
-		std::cout << b << std::endl;
-		std::cout << f << std::endl;
-		b.signForm(f);
+		b.executeForm(f);
 	}
 	catch(const std::exception &e)
 	{
@@ -126,16 +84,11 @@ static void	__test5(void)
 
 int	main(void)
 {
+	std::srand(time(NULL));
 	__test0();
 	std::cout << "===============================================" << std::endl;
 	__test1();
 	std::cout << "===============================================" << std::endl;
 	__test2();
-	std::cout << "===============================================" << std::endl;
-	__test3();
-	std::cout << "===============================================" << std::endl;
-	__test4();
-	std::cout << "===============================================" << std::endl;
-	__test5();
 	return EXIT_SUCCESS;
 }

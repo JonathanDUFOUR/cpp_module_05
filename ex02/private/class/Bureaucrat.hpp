@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 18:47:48 by jodufour          #+#    #+#             */
-/*   Updated: 2022/02/01 15:39:19 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/02/01 19:30:57 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 # define BUREAUCRAT_HPP
 
 # include <iostream>
-# include "class/Form.hpp"
+# include "class/AForm.hpp"
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -50,13 +50,13 @@ public:
 
 	// Accessors
 	std::string const	&getName(void) const;
-
 	int const			&getGrade(void) const;
 
 	// Member functions
 	void	decrementGrade(void);
 	void	incrementGrade(void);
-	void	signForm(Form &f) const;
+	void	signForm(AForm &f) const;
+	void	executeForm(AForm const &f) const;
 
 	// Operator overloads
 	Bureaucrat	&operator=(Bureaucrat const &rhs);
