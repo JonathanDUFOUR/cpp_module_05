@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 21:12:14 by jodufour          #+#    #+#             */
-/*   Updated: 2022/02/01 17:17:11 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/02/01 21:20:25 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ AForm::AForm(AForm const &src) :
 		throw AForm::GradeTooHighException();
 	if (this->_gradeToSign > 150 || this->_gradeToExec > 150)
 		throw AForm::GradeTooLowException();
+	*this = src;
 }
 
 AForm::AForm(

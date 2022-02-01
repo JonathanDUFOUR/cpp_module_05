@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:30:28 by jodufour          #+#    #+#             */
-/*   Updated: 2022/02/01 19:49:04 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/02/01 21:21:36 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &src
 	<< " (" << this->getGradeToExec() << ")"
 	<< " -> " << this->_target
 	<< std::endl;
+	*this = src;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(std::string const &target) :

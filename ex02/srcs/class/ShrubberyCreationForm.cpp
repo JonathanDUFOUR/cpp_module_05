@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:33:37 by jodufour          #+#    #+#             */
-/*   Updated: 2022/02/01 20:27:20 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/02/01 21:22:03 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &src) :
 	<< " (" << this->getGradeToExec() << ")"
 	<< " -> " << this->_target
 	<< std::endl;
+	*this = src;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string const &target) :

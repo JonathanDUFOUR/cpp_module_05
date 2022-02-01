@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/30 18:46:06 by jodufour          #+#    #+#              #
-#    Updated: 2022/02/01 20:46:10 by jodufour         ###   ########.fr        #
+#    Updated: 2022/02/01 20:48:19 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ RM				=	rm -rf
 ######################################
 #             EXECUTABLE             #
 ######################################
-NAME			=	ex02.out
+NAME			=	ex03.out
 
 #######################################
 #             DIRECTORIES             #
@@ -37,6 +37,7 @@ SRC				=	\
 					${addprefix class/,				\
 						AForm.cpp					\
 						Bureaucrat.cpp				\
+						Intern.cpp					\
 						PresidentialPardonForm.cpp	\
 						RobotomyRequestForm.cpp		\
 						ShrubberyCreationForm.cpp	\

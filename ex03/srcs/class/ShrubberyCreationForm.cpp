@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
+/*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/01 14:31:29 by jodufour          #+#    #+#             */
-/*   Updated: 2022/02/01 21:21:52 by jodufour         ###   ########.fr       */
+/*   Created: 2022/02/01 14:33:37 by jodufour          #+#    #+#             */
+/*   Updated: 2022/02/01 21:57:00 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cstdlib>
-#include "class/RobotomyRequestForm.hpp"
+#include <fstream>
+#include "class/ShrubberyCreationForm.hpp"
 
 // ************************************************************************** //
 //                                Constructors                                //
 // ************************************************************************** //
 
-RobotomyRequestForm::RobotomyRequestForm(void) :
-	AForm("robotomy request", false, 72, 45),
+ShrubberyCreationForm::ShrubberyCreationForm(void) :
+	AForm("shrubbery creation", false, 145, 137),
 	_target("defaultTarget")
 {
 	std::cout
-	<< "Writing RobotomyRequestForm "
+	<< "Writing ShrubberyCreationForm "
 	<< this->getName()
 	<< " (" << this->getGradeToSign() << ")"
 	<< " (" << this->getGradeToExec() << ")"
@@ -30,12 +30,12 @@ RobotomyRequestForm::RobotomyRequestForm(void) :
 	<< std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &src) :
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &src) :
 	AForm(src.getName(), src.getIsSigned(), src.getGradeToSign(), src.getGradeToExec()),
 	_target(src._target)
 {
 	std::cout
-	<< "Writing RobotomyRequestForm "
+	<< "Writing ShrubberyCreationForm "
 	<< this->getName()
 	<< " (" << this->getGradeToSign() << ")"
 	<< " (" << this->getGradeToExec() << ")"
@@ -44,12 +44,12 @@ RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &src) :
 	*this = src;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string const &target) :
-	AForm("robotomy request", false, 72, 45),
+ShrubberyCreationForm::ShrubberyCreationForm(std::string const &target) :
+	AForm("shrubbery creation", false, 145, 137),
 	_target(target)
 {
 	std::cout
-	<< "Writing RobotomyRequestForm "
+	<< "Writing ShrubberyCreationForm "
 	<< this->getName()
 	<< " (" << this->getGradeToSign() << ")"
 	<< " (" << this->getGradeToExec() << ")"
@@ -61,10 +61,10 @@ RobotomyRequestForm::RobotomyRequestForm(std::string const &target) :
 //                                Destructors                                //
 // ************************************************************************* //
 
-RobotomyRequestForm::~RobotomyRequestForm(void)
+ShrubberyCreationForm::~ShrubberyCreationForm(void)
 {
 	std::cout
-	<< "Burning RobotomyRequestForm "
+	<< "Burning ShrubberyCreationForm "
 	<< this->getName()
 	<< std::endl;
 }
@@ -73,7 +73,7 @@ RobotomyRequestForm::~RobotomyRequestForm(void)
 //                                 Accessors                                 //
 // ************************************************************************* //
 
-std::string const	&RobotomyRequestForm::getTarget(void) const
+std::string const	&ShrubberyCreationForm::getTarget(void) const
 {
 	return this->_target;
 }
@@ -82,7 +82,7 @@ std::string const	&RobotomyRequestForm::getTarget(void) const
 //                          Public Member Functions                          //
 // ************************************************************************* //
 
-void	RobotomyRequestForm::beSigned(Bureaucrat const &b)
+void	ShrubberyCreationForm::beSigned(Bureaucrat const &b)
 {
 	if (b.getGrade() > this->getGradeToSign())
 		throw AForm::GradeTooLowException();
@@ -91,31 +91,50 @@ void	RobotomyRequestForm::beSigned(Bureaucrat const &b)
 	this->setIsSigned(true);
 }
 
-void	RobotomyRequestForm::execute(Bureaucrat const &b) const
+void	ShrubberyCreationForm::execute(Bureaucrat const &b) const
 {
+	std::ofstream		ofs;
+	std::string const	filename = this->_target + "_shrubbery";
+
 	if (b.getGrade() > this->getGradeToExec())
 		throw AForm::GradeTooLowException();
-	std::cout
-	<< "** drilling noises **"
+	ofs.open(filename.c_str());
+	// ofs << "ASCII trees" << std::endl;
+	ofs << "\
+            .        +          .      .          .\n\
+     .            _        .                    .\n\
+  ,              /;-._,-.____        ,-----.__\n\
+ ((        .    (_:#::_.:::. `-._   /:, /-._, `._,\n\
+  `                 \\   _|`\"=:_::.`.);  \\ __/ /\n\
+                      ,    `./  \\:. `.   )==-'  .\n\
+    .      ., ,-=-.  ,\\, +#./`   \\:.  / /           .\n\
+.           \\/:/`-' , ,\\ '` ` `   ): , /_  -o\n\
+       .    /:+- - + +- : :- + + -:'  /(o-) \\)     .\n\
+  .      ,=':  \\    ` `/` ' , , ,:' `'--\".--\"---._/`7\n\
+   `.   (    \\: \\,-._` ` + '\\, ,\"   _,--._,---\":.__/\n\
+              \\:  `  X` _| _,\\/'   .-'\n\
+.               \":._:`\\____  /:'  /      .           .\n\
+                    \\::.  :\\/:'  /              +\n\
+   .                 `.:.  /:'  }      .\n\
+           .           ):_(:;   \\           .\n\
+                      /:. _/ ,  |\n\
+                   . (|::.     ,`                  .\n\
+     .                |::.    {\\\n\
+                      |::.\\  \\ `.\n\
+                      |:::(\\    |\n\
+              O       |:::/{ }  |                  (o\n\
+               )  ___/#\\::`/ (O \"==._____   O, (O  /`\n\
+          ~~~w/w~\"~~,\\` `:/,-(~`\"~~~~~~~~\"~o~\\~/~w|/~\n\
+      ~~~~~~~~~~~~~~~~~~~~~~~\\\\W~~~~~~~~~~~~\\|/~~"
 	<< std::endl;
-	if (std::rand() % 2)
-		std::cout
-		<< this->_target
-		<< " has been robotomized successfuly!"
-		<< std::endl;
-	else
-		std::cout
-		<< "The robotomy of "
-		<< this->_target
-		<< " failed..."
-		<< std::endl;
+	ofs.close();
 }
 
 // ************************************************************************** //
 //                             Operator Overloads                             //
 // ************************************************************************** //
 
-RobotomyRequestForm	&RobotomyRequestForm::operator=(RobotomyRequestForm const &rhs)
+ShrubberyCreationForm	&ShrubberyCreationForm::operator=(ShrubberyCreationForm const &rhs)
 {
 	if (this != &rhs)
 	{
@@ -127,9 +146,9 @@ RobotomyRequestForm	&RobotomyRequestForm::operator=(RobotomyRequestForm const &r
 	return *this;
 }
 
-std::ostream	&operator<<(std::ostream &o, RobotomyRequestForm const &rhs)
+std::ostream	&operator<<(std::ostream &o, ShrubberyCreationForm const &rhs)
 {
-	o << "RobotomyRequestForm:" << std::endl
+	o << "ShrubberyCreationForm:" << std::endl
 	<< "\t" "name: " << rhs.getName() << std::endl
 	<< "\t" "isSigned: " << (rhs.getIsSigned() ? "true" : "false") << std::endl
 	<< "\t" "gradeToSign: " << rhs.getGradeToSign() << std::endl
