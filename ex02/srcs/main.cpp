@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 18:47:08 by jodufour          #+#    #+#             */
-/*   Updated: 2022/02/01 20:38:54 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/02/02 15:12:34 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	__test0(void)
 		b.signForm(f);
 		b.executeForm(f);
 	}
-	catch(const std::exception &e)
+	catch(std::exception &e)
 	{
 		std::cerr
 		<< "Error: "
@@ -51,7 +51,7 @@ static void	__test1(void)
 		b.signForm(f);
 		b.executeForm(f);
 	}
-	catch(const std::exception &e)
+	catch(std::exception &e)
 	{
 		std::cerr
 		<< "Error: "
@@ -73,7 +73,7 @@ static void	__test2(void)
 		b.signForm(f);
 		b.executeForm(f);
 	}
-	catch(const std::exception &e)
+	catch(std::exception &e)
 	{
 		std::cerr
 		<< "Error: "

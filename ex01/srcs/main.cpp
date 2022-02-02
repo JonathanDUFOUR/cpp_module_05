@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 18:47:08 by jodufour          #+#    #+#             */
-/*   Updated: 2022/02/01 14:36:56 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/02/02 15:14:12 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	__test0(void)
 
 		std::cout << f << std::endl;
 	}
-	catch(const std::exception &e)
+	catch (std::exception &e)
 	{
 		std::cerr
 		<< "Error: "
@@ -38,7 +38,7 @@ static void	__test1(void)
 
 		std::cout << f << std::endl;
 	}
-	catch(const std::exception &e)
+	catch (std::exception &e)
 	{
 		std::cerr
 		<< "Error: "
@@ -55,7 +55,7 @@ static void	__test2(void)
 
 		std::cout << f << std::endl;
 	}
-	catch(const std::exception &e)
+	catch (std::exception &e)
 	{
 		std::cerr
 		<< "Error: "
@@ -75,7 +75,7 @@ static void	__test3(void)
 		std::cout << f << std::endl;
 		b.signForm(f);
 	}
-	catch(const std::exception &e)
+	catch (std::exception &e)
 	{
 		std::cerr
 		<< "Error: "
@@ -95,7 +95,7 @@ static void	__test4(void)
 		std::cout << f << std::endl;
 		b.signForm(f);
 	}
-	catch(const std::exception &e)
+	catch (std::exception &e)
 	{
 		std::cerr
 		<< "Error: "
@@ -115,7 +115,7 @@ static void	__test5(void)
 		std::cout << f << std::endl;
 		b.signForm(f);
 	}
-	catch(const std::exception &e)
+	catch (std::exception &e)
 	{
 		std::cerr
 		<< "Error: "
