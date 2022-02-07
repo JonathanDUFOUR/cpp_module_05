@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 18:47:48 by jodufour          #+#    #+#             */
-/*   Updated: 2022/02/01 15:39:33 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/02/07 03:50:39 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ public:
 	void	decrementGrade(void);
 	void	incrementGrade(void);
 
-	// Operator overloads
+	// Operators
 	Bureaucrat	&operator=(Bureaucrat const &rhs);
 };
 

@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:35:26 by jodufour          #+#    #+#             */
-/*   Updated: 2022/02/01 17:37:36 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/02/07 03:50:39 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ public:
 	virtual void	beSigned(Bureaucrat const &b);
 	virtual void	execute(Bureaucrat const &b) const;
 
-	// Operator overloads
+	// Operators
 	PresidentialPardonForm	&operator=(PresidentialPardonForm const &rhs);
 };
 

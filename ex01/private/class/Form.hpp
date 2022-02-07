@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 21:11:45 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/31 23:20:50 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/02/07 03:50:39 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ public:
 	// Member functions
 	void	beSigned(Bureaucrat const &b);
 
-	// Operator overloads
+	// Operators
 	Form	&operator=(Form const &rhs);
 };
 

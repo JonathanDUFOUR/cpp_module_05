@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:34:22 by jodufour          #+#    #+#             */
-/*   Updated: 2022/02/01 19:20:54 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/02/07 03:50:39 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ public:
 	virtual void	beSigned(Bureaucrat const &b);
 	virtual void	execute(Bureaucrat const &b) const;
 
-	// Operator overloads
+	// Operators
 	ShrubberyCreationForm	&operator=(ShrubberyCreationForm const &rhs);
 };
 
