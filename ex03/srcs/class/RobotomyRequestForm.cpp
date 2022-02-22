@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:31:29 by jodufour          #+#    #+#             */
-/*   Updated: 2022/02/07 04:27:53 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/02/22 21:41:49 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,44 +17,32 @@
 //                                Constructors                                //
 // ************************************************************************** //
 
-RobotomyRequestForm::RobotomyRequestForm(void) :
-	AForm("robotomy request", false, 72, 45),
-	_target("defaultTarget")
-{
-	std::cout
-	<< "Writing RobotomyRequestForm "
-	<< this->getName()
-	<< " (" << this->getGradeToSign() << ")"
-	<< " (" << this->getGradeToExec() << ")"
-	<< " -> " << this->_target
-	<< std::endl;
-}
-
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &src) :
-	AForm(src.getName(), src.getIsSigned(), src.getGradeToSign(), src.getGradeToExec()),
-	_target(src._target)
-{
-	std::cout
-	<< "Writing RobotomyRequestForm "
-	<< this->getName()
-	<< " (" << this->getGradeToSign() << ")"
-	<< " (" << this->getGradeToExec() << ")"
-	<< " -> " << this->_target
-	<< std::endl;
-	*this = src;
-}
-
 RobotomyRequestForm::RobotomyRequestForm(std::string const &target) :
 	AForm("robotomy request", false, 72, 45),
 	_target(target)
 {
-	std::cout
-	<< "Writing RobotomyRequestForm "
-	<< this->getName()
-	<< " (" << this->getGradeToSign() << ")"
-	<< " (" << this->getGradeToExec() << ")"
-	<< " -> " << this->_target
-	<< std::endl;
+	if (DEBUG)
+		std::cout
+		<< "Creating RobotomyRequestForm "
+		<< this->getName()
+		<< " (" << this->getGradeToSign() << ")"
+		<< " (" << this->getGradeToExec() << ")"
+		<< " (" << this->_target << ")"
+		<< std::endl;
+}
+
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &src) :
+	AForm(src),
+	_target(src._target)
+{
+	if (DEBUG)
+		std::cout
+		<< "Creating RobotomyRequestForm "
+		<< this->getName()
+		<< " (" << this->getGradeToSign() << ")"
+		<< " (" << this->getGradeToExec() << ")"
+		<< " (" << this->_target << ")"
+		<< std::endl;
 }
 
 // ************************************************************************* //
@@ -63,10 +51,11 @@ RobotomyRequestForm::RobotomyRequestForm(std::string const &target) :
 
 RobotomyRequestForm::~RobotomyRequestForm(void)
 {
-	std::cout
-	<< "Burning RobotomyRequestForm "
-	<< this->getName()
-	<< std::endl;
+	if (DEBUG)
+		std::cout
+		<< "Destroying RobotomyRequestForm "
+		<< this->getName()
+		<< std::endl;
 }
 
 // ************************************************************************* //
@@ -75,6 +64,10 @@ RobotomyRequestForm::~RobotomyRequestForm(void)
 
 std::string const	&RobotomyRequestForm::getTarget(void) const
 {
+	if (DEBUG)
+		std::cout
+		<< "Calling RobotomyRequestForm::getTarget()"
+		<< std::endl;
 	return this->_target;
 }
 
@@ -84,6 +77,10 @@ std::string const	&RobotomyRequestForm::getTarget(void) const
 
 void	RobotomyRequestForm::beSigned(Bureaucrat const &b)
 {
+	if (DEBUG)
+		std::cout
+		<< "Calling RobotomyRequestForm::beSigned()"
+		<< std::endl;
 	if (b.getGrade() > this->getGradeToSign())
 		throw AForm::GradeTooLowException();
 	if (this->getIsSigned())
@@ -93,6 +90,10 @@ void	RobotomyRequestForm::beSigned(Bureaucrat const &b)
 
 void	RobotomyRequestForm::execute(Bureaucrat const &b) const
 {
+	if (DEBUG)
+		std::cout
+		<< "Calling RobotomyRequestForm::execute()"
+		<< std::endl;
 	if (b.getGrade() > this->getGradeToExec())
 		throw AForm::GradeTooLowException();
 	std::cout
@@ -117,21 +118,23 @@ void	RobotomyRequestForm::execute(Bureaucrat const &b) const
 
 RobotomyRequestForm	&RobotomyRequestForm::operator=(RobotomyRequestForm const &rhs)
 {
+	if (DEBUG)
+		std::cout
+		<< "Calling RobotomyRequestForm::operator=()"
+		<< std::endl;
 	if (this != &rhs)
 	{
-		this->setName(rhs.getName());
-		this->setIsSigned(rhs.getIsSigned());
-		this->setGradeToSign(rhs.getGradeToSign());
-		this->setGradeToExec(rhs.getGradeToExec());
+		this->AForm::operator=(rhs);
+		this->_target = rhs._target;
 	}
 	return *this;
 }
 
 std::ostream	&operator<<(std::ostream &o, RobotomyRequestForm const &rhs)
 {
-	o << "RobotomyRequestForm:" << std::endl
+	o << "RobotomyRequestForm:" << std::boolalpha << std::endl
 	<< "\t" "name: " << rhs.getName() << std::endl
-	<< "\t" "isSigned: " << (rhs.getIsSigned() ? "true" : "false") << std::endl
+	<< "\t" "isSigned: " << rhs.getIsSigned() << std::endl
 	<< "\t" "gradeToSign: " << rhs.getGradeToSign() << std::endl
 	<< "\t" "gradeToExec: " << rhs.getGradeToExec() << std::endl
 	<< "\t" "target: " << rhs.getTarget() << std::endl;

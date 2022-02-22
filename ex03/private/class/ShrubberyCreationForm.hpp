@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:34:22 by jodufour          #+#    #+#             */
-/*   Updated: 2022/02/07 03:50:39 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/02/22 21:59:14 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,15 @@
 # include <iostream>
 # include "class/AForm.hpp"
 
+# ifndef DEBUG
+#  define DEBUG 0
+# endif
+
 class ShrubberyCreationForm : public AForm
 {
 private:
-	std::string const	_target;
+	// Attributes
+	std::string	_target;
 
 protected:
 

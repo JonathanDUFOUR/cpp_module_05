@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:35:06 by jodufour          #+#    #+#             */
-/*   Updated: 2022/02/07 03:50:39 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/02/22 21:59:05 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,21 @@
 # include <iostream>
 # include "class/AForm.hpp"
 
+# ifndef DEBUG
+#  define DEBUG 0
+# endif
+
 class RobotomyRequestForm : public AForm
 {
 private:
-	std::string const	_target;
-
-protected:
+	// Attributes
+	std::string	_target;
 
 public:
 	// Constructors
-	RobotomyRequestForm(void);
+	RobotomyRequestForm(
+		std::string const &target = std::string("defaultTarget"));
 	RobotomyRequestForm(RobotomyRequestForm const &src);
-	RobotomyRequestForm(std::string const &target);
 
 	// Destructors
 	virtual ~RobotomyRequestForm(void);

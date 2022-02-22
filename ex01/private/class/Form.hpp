@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 21:11:45 by jodufour          #+#    #+#             */
-/*   Updated: 2022/02/07 03:50:39 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/02/22 20:46:45 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 # include <iostream>
 # include "class/Bureaucrat.hpp"
+
+# ifndef DEBUG
+#  define DEBUG 0
+# endif
 
 class Bureaucrat;
 
@@ -48,17 +52,14 @@ private:
 		virtual char const	*what(void) const throw();
 	};
 
-protected:
-
 public:
 	// Constructors
-	Form(void);
-	Form(Form const &src);
 	Form(
-		std::string const name,
-		bool const issigned,
-		int const gradeToSign,
-		int const gradeToExec);
+		std::string const &name = std::string("defaultName"),
+		bool const issigned = false,
+		int const gradeToSign = 150,
+		int const gradeToExec = 150);
+	Form(Form const &src);
 
 	// Destructors
 	virtual ~Form(void);

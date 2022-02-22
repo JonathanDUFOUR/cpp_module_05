@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 21:11:45 by jodufour          #+#    #+#             */
-/*   Updated: 2022/02/07 03:50:39 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/02/22 22:04:33 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 # include <iostream>
 # include "class/Bureaucrat.hpp"
+
+# ifndef DEBUG
+#  define DEBUG 0
+# endif
 
 class Bureaucrat;
 
@@ -49,16 +53,15 @@ protected:
 		virtual char const	*what(void) const throw();
 	};
 
-public:
 	// Constructors
-	AForm(void);
-	AForm(AForm const &src);
 	AForm(
-		std::string const name,
-		bool const issigned,
-		int const gradeToSign,
-		int const gradeToExec);
+		std::string const &name = std::string("defaultName"),
+		bool const issigned = false,
+		int const gradeToSign = 150,
+		int const gradeToExec = 150);
+	AForm(AForm const &src);
 
+public:
 	// Destructors
 	virtual ~AForm(void);
 
@@ -68,10 +71,7 @@ public:
 	int const			&getGradeToSign(void) const;
 	int const			&getGradeToExec(void) const;
 
-	void				setName(std::string const &name);
-	void				setIsSigned(bool const isSigned);
-	void				setGradeToSign(int const gradeToSign);
-	void				setGradeToExec(int const gradeToExec);
+	void				setIsSigned(bool const issigned);
 
 	// Member functions
 	virtual void	beSigned(Bureaucrat const &b) = 0;

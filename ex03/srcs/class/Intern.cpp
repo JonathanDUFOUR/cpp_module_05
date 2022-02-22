@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 20:48:31 by jodufour          #+#    #+#             */
-/*   Updated: 2022/02/07 04:27:25 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/02/22 22:14:05 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,18 @@
 
 Intern::Intern(void)
 {
-	std::cout
-	<< "Spawning Intern"
-	<< std::endl;
+	if (DEBUG)
+		std::cout
+		<< "Creating Intern"
+		<< std::endl;
 }
 
-Intern::Intern(Intern const &src)
+Intern::Intern(Intern const &src __attribute__((unused)))
 {
-	std::cout
-	<< "Spawning Intern"
-	<< std::endl;
-	*this = src;
+	if (DEBUG)
+		std::cout
+		<< "Creating Intern"
+		<< std::endl;
 }
 
 // ************************************************************************* //
@@ -40,9 +41,10 @@ Intern::Intern(Intern const &src)
 
 Intern::~Intern(void)
 {
-	std::cout
-	<< "Killing Intern"
-	<< std::endl;
+	if (DEBUG)
+		std::cout
+		<< "Destroying Intern"
+		<< std::endl;
 }
 
 // ************************************************************************** //
@@ -51,25 +53,28 @@ Intern::~Intern(void)
 
 AForm	*Intern::makeShrubberyCreationForm(std::string const &target)
 {
-	std::cout
-	<< "Intern creates ShrubberyCreationForm"
-	<< std::endl;
+	if (DEBUG)
+		std::cout
+		<< "Calling Intern::makeShrubberyCreationForm()"
+		<< std::endl;
 	return new ShrubberyCreationForm(target);
 }
 
 AForm	*Intern::makeRobotomyRequestForm(std::string const &target)
 {
-	std::cout
-	<< "Intern creates RobotomyRequestForm"
-	<< std::endl;
+	if (DEBUG)
+		std::cout
+		<< "Calling Intern::makeRobotomyRequestForm()"
+		<< std::endl;
 	return new RobotomyRequestForm(target);
 }
 
 AForm	*Intern::makePresidentialPardonForm(std::string const &target)
 {
-	std::cout
-	<< "Intern creates PresidentialPardonForm"
-	<< std::endl;
+	if (DEBUG)
+		std::cout
+		<< "Calling Intern::makePresidentialPardonForm()"
+		<< std::endl;
 	return new PresidentialPardonForm(target);
 }
 
@@ -81,6 +86,10 @@ AForm	*Intern::makeForm(std::string const &name, std::string const &target) cons
 {
 	int	i;
 
+	if (DEBUG)
+		std::cout
+		<< "Calling Intern::makeForm()"
+		<< std::endl;
 	for (i = 0 ; lookup[i].maker ; ++i)
 		if (!name.compare(lookup[i].name))
 			return lookup[i].maker(target);
@@ -89,6 +98,10 @@ AForm	*Intern::makeForm(std::string const &name, std::string const &target) cons
 
 char const	*Intern::UnknownFormException::what(void) const throw()
 {
+	if (DEBUG)
+		std::cout
+		<< "Calling Intern::UnknownFormException::what()"
+		<< std::endl;
 	return "wanted form is unknown";
 }
 
@@ -98,6 +111,10 @@ char const	*Intern::UnknownFormException::what(void) const throw()
 
 Intern	&Intern::operator=(Intern const &rhs __attribute__((unused)))
 {
+	if (DEBUG)
+		std::cout
+		<< "Calling Intern::operator=()"
+		<< std::endl;
 	return *this;
 }
 
@@ -112,8 +129,8 @@ std::ostream	&operator<<(std::ostream &o, Intern const &rhs __attribute__((unuse
 // ************************************************************************** //
 
 t_nameForm	Intern::lookup[] = {
-	{"shrubbery creation", makeShrubberyCreationForm},
-	{"robotomy request", makeRobotomyRequestForm},
-	{"presidential pardon", makePresidentialPardonForm},
-	{"", NULL}
+	{std::string("shrubbery creation"), makeShrubberyCreationForm},
+	{std::string("robotomy request"), makeRobotomyRequestForm},
+	{std::string("presidential pardon"), makePresidentialPardonForm},
+	{std::string(""), NULL}
 };

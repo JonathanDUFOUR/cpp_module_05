@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 20:48:57 by jodufour          #+#    #+#             */
-/*   Updated: 2022/02/07 03:50:39 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/02/22 22:12:15 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 # define INTERN_HPP
 
 # include <iostream>
-# include <signal.h>
 # include "class/AForm.hpp"
+
+# ifndef DEBUG
+#  define DEBUG 0
+# endif
 
 typedef struct s_nameForm	t_nameForm;
 typedef AForm *				(*t_fct)(std::string const &target);
