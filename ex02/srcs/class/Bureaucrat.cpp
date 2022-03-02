@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 18:48:18 by jodufour          #+#    #+#             */
-/*   Updated: 2022/02/25 09:47:35 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/03/02 19:58:47 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 //                                Constructors                                //
 // ************************************************************************** //
 
-Bureaucrat::Bureaucrat(std::string const &name, int const grade) :
+Bureaucrat::Bureaucrat(std::string const &name, uint const grade) :
 	_name(name),
 	_grade(grade)
 {
@@ -74,7 +74,7 @@ std::string const	&Bureaucrat::getName(void) const
 	return this->_name;
 }
 
-int const	&Bureaucrat::getGrade(void) const
+uint const	&Bureaucrat::getGrade(void) const
 {
 	if (DEBUG)
 		std::cout

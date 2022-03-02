@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 21:12:14 by jodufour          #+#    #+#             */
-/*   Updated: 2022/02/22 16:41:33 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/03/02 19:53:53 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 Form::Form(
 	std::string const &name,
 	bool const isSigned,
-	int const gradeToSign,
-	int const gradeToExec) :
+	uint const gradeToSign,
+	uint const gradeToExec) :
 	_name(name),
 	_isSigned(isSigned),
 	_gradeToSign(gradeToSign),
@@ -97,7 +97,7 @@ bool const	&Form::getIsSigned(void) const
 	return this->_isSigned;
 }
 
-int const	&Form::getGradeToSign(void) const
+uint const	&Form::getGradeToSign(void) const
 {
 	if (DEBUG)
 		std::cout
@@ -106,7 +106,7 @@ int const	&Form::getGradeToSign(void) const
 	return this->_gradeToSign;
 }
 
-int const	&Form::getGradeToExec(void) const
+uint const	&Form::getGradeToExec(void) const
 {
 	if (DEBUG)
 		std::cout
@@ -173,8 +173,8 @@ Form	&Form::operator=(Form const &rhs)
 	{
 		*(std::string *)&this->_name = rhs._name;
 		this->_isSigned = rhs._isSigned;
-		*(int *)&this->_gradeToSign = rhs._gradeToSign;
-		*(int *)&this->_gradeToExec = rhs._gradeToExec;
+		*(uint *)&this->_gradeToSign = rhs._gradeToSign;
+		*(uint *)&this->_gradeToExec = rhs._gradeToExec;
 	}
 	return *this;
 }

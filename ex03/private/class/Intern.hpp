@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 20:48:57 by jodufour          #+#    #+#             */
-/*   Updated: 2022/02/22 22:12:15 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/03/02 20:04:50 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 #  define DEBUG 0
 # endif
 
-typedef struct s_nameForm	t_nameForm;
-typedef AForm *				(*t_fct)(std::string const &target);
+typedef struct s_mkForm	t_mkForm;
+typedef AForm *			(*t_fct)(std::string const &target);
 
-struct s_nameForm
+struct s_mkForm
 {
 	std::string const	name;
 	t_fct const			maker;
@@ -35,7 +35,7 @@ class Intern
 {
 private:
 	// Attributes
-	static t_nameForm	lookup[];
+	static t_mkForm	_lookup[];
 
 	class UnknownFormException : public std::exception
 	{

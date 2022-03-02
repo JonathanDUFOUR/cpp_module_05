@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 20:48:31 by jodufour          #+#    #+#             */
-/*   Updated: 2022/02/22 22:14:05 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/03/02 20:07:59 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,9 @@ AForm	*Intern::makeForm(std::string const &name, std::string const &target) cons
 		std::cout
 		<< "Calling Intern::makeForm()"
 		<< std::endl;
-	for (i = 0 ; lookup[i].maker ; ++i)
-		if (!name.compare(lookup[i].name))
-			return lookup[i].maker(target);
+	for (i = 0 ; _lookup[i].maker ; ++i)
+		if (!name.compare(_lookup[i].name))
+			return _lookup[i].maker(target);
 	throw Intern::UnknownFormException();
 }
 
@@ -128,9 +128,9 @@ std::ostream	&operator<<(std::ostream &o, Intern const &rhs __attribute__((unuse
 //                             Private Attributes                             //
 // ************************************************************************** //
 
-t_nameForm	Intern::lookup[] = {
-	{std::string("shrubbery creation"), makeShrubberyCreationForm},
-	{std::string("robotomy request"), makeRobotomyRequestForm},
-	{std::string("presidential pardon"), makePresidentialPardonForm},
+t_mkForm	Intern::_lookup[] = {
+	{std::string("shrubbery creation"), Intern::makeShrubberyCreationForm},
+	{std::string("robotomy request"), Intern::makeRobotomyRequestForm},
+	{std::string("presidential pardon"), Intern::makePresidentialPardonForm},
 	{std::string(""), NULL}
 };

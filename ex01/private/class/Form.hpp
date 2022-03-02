@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 21:11:45 by jodufour          #+#    #+#             */
-/*   Updated: 2022/02/22 20:46:45 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/03/02 19:50:49 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 #  define DEBUG 0
 # endif
 
+typedef unsigned int	uint;
+
 class Bureaucrat;
 
 class Form
@@ -28,8 +30,8 @@ private:
 	// Attributes
 	std::string const	_name;
 	bool				_isSigned;
-	int const			_gradeToSign;
-	int const			_gradeToExec;
+	uint const			_gradeToSign;
+	uint const			_gradeToExec;
 
 	class GradeTooHighException : public std::exception
 	{
@@ -57,8 +59,8 @@ public:
 	Form(
 		std::string const &name = std::string("defaultName"),
 		bool const issigned = false,
-		int const gradeToSign = 150,
-		int const gradeToExec = 150);
+		uint const gradeToSign = 150U,
+		uint const gradeToExec = 150U);
 	Form(Form const &src);
 
 	// Destructors
@@ -69,8 +71,8 @@ public:
 
 	bool const			&getIsSigned(void) const;
 
-	int const			&getGradeToSign(void) const;
-	int const			&getGradeToExec(void) const;
+	uint const			&getGradeToSign(void) const;
+	uint const			&getGradeToExec(void) const;
 
 	// Member functions
 	void	beSigned(Bureaucrat const &b);
